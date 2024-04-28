@@ -5,8 +5,7 @@ import {
   postRegisterC,
 } from "../controllers/register.controllers.js";
 import { loginPage, getLoginC } from "../controllers/login.controllers.js";
-import { perfilPage } from "../controllers/profile.controllers.js";
-import { deletePerfilC } from "../controllers/profile.controllers.js";
+import { perfilPage, putPerfilC, /*deletePerfilC*/ } from "../controllers/profile.controllers.js";
 // import { validateToken } from "../../middleware/validateToken.js";
 
 const router = Router();
@@ -17,7 +16,7 @@ router.get("/login", loginPage);
 router.get("/perfil", perfilPage);
 router.post("/skaters", postRegisterC);
 router.post("/login", getLoginC);
-//router.put("/skaters", );
+//router.put("/skaters", putPerfilC);
 //router.delete("/skaters", deletePerfilC);
 //router.post("/admin", validateToken);
 

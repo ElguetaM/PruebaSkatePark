@@ -1,12 +1,16 @@
-export const getLoginQ = async ({email, password}) => {
+import pool from "../../config/db.js";
+
+export const getLoginQ = async ({ email, password }) => {
   try {
     const query = {
-      text: "SELECT * FROM skaters WHERE email = $1 AND password = $2",
-      values: {email, password},
+      text: `SELECT * FROM skaters WHERE email = $1 AND "password" = $2`,
+      values: [email, password],
     };
     const res = await pool.query(query);
-    return res;
-  } catch (error) {}
+    return res.rows[0];
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 // SELECT FROM skaters WHERE email='admin@admin' AND password= '111'

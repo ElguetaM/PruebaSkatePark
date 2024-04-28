@@ -1,39 +1,48 @@
+import {
+  getPerfilQ,
+  putPerfilQ,
+  deletePerfilQ,
+} from "../query/profile.query.js";
+import { validateToken } from "../../middleware/validateToken.js";
+
 import jwt from "jsonwebtoken";
-import { getPerfilQ } from "../query/profile.query.js";
 
 const myKey = process.env.SECRET_KEY;
 
 export const perfilPage = async (req, res) => {
   const { token } = req.query;
   const decoded = jwt.verify(token, myKey);
-  const skater = await getPerfilQ(decoded);
+  const users = decoded.users;
+  const skater = await getPerfilQ(users);
+  const email = users.email;
+
   res.render("perfil", { skater });
 };
 
-// Luego de iniciar la sesión, los participantes deberán poder modificar sus datos,exceptuando el correo electrónico y su foto. Esta vista debe estar protegida con JWT y los datos que se utilicen en la plantilla deben ser extraídos del token//
-
-// export const putPerfilC = async (req, res) => {
-//   try {
-//     const data = req.body;
-//     const skaters = await putPerfilQ(data);
-//     res
-//       .json({
-//         skaters,
-//         message: `Skater editado con exito`,
-//       })
-//       .status(201);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const putPerfilC = async (req, res) => {
+  // try {
+  const { nombre, password, anos_experiencia, especialidad } = req.body;
+  const newInfo = {
+    nombre,
+    password,
+    anos_experiencia,
+    especialidad,
+  };
+  //const email = skater.find((skater) => skater.email);
+  //const updSkater = await putPerfilQ(newInfo);
+  // res.status(201).send(updSkater);
+  //console.log(updSkater);
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
+};
 
 export const deletePerfilC = async (req, res) => {
+  //necesito id//
   try {
-    const { id } = req.query;
-    const skater = await deleteSkaterQ(id);
-    console.log(skater);
-    res.status(200).send(skater).redirect("/");
+    const skater = await deletePerfilQ(validateToken);
+    //  res.status(201).render({ skater });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
