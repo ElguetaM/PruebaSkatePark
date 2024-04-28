@@ -25,29 +25,3 @@ export const getRegisterQ = async () => {
     res.send(error.message);
   }
 };
-
-// export const putPerfilQ = async (data) => {
-//   try {
-//     const query = {
-//       text: "UPDATE skaters SET nombre = $1, anos_experiencia = $2, especialidad = $3, estado = $4, fotos = $5 WHERE id = $6, RERUNNING *",
-//       values: data,
-//     };
-//     const res = await pool.query(query);
-//     return res;
-//   } catch (error) {
-//     res.send(error.message);
-//   }
-// };
-
-// export const deletePerfilQ = async (id) => {
-//   try {
-//     const query = {
-//       text: "DELETE FROM skaters WHERE id = $1",
-//       values: id,
-//     };
-//     const res = await pool.query(query);
-//     return res;
-//   } catch (error) {
-//     res.send(error.message);
-//   }
-// };

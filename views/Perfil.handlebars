@@ -22,7 +22,7 @@
             </div>
             <div class="form-group col-12 col-sm-6">
                 <label>Años de experiencia</label>
-                <input name="años_experiencia" class="form-control m-auto" value="{{skater.anos_experiencia}}" />
+                <input name="anos_experiencia" class="form-control m-auto" value="{{skater.anos_experiencia}}" />
             </div>
             <div class="form-group col-12 col-sm-6">
                 <label>Especialidad</label>
@@ -61,16 +61,16 @@
     form.addEventListener("submit", async (e) => {
         e.preventDefault()
 
-        let [email, nombre, password, repassword, años_experiencia, especialidad] = document.querySelectorAll("input")
+        let [email, nombre, password, repassword, anos_experiencia, especialidad] = document.querySelectorAll("input")
 
         nombre = nombre.value
         password = password.value
-        años_experiencia = años_experiencia.value
+        anos_experiencia = anos_experiencia.value
         especialidad = especialidad.value
         const skater = {
             nombre,
             password,
-            años_experiencia,
+            anos_experiencia,
             especialidad
         }
         try {
