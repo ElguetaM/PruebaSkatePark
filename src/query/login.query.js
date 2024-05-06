@@ -12,5 +12,3 @@ export const getLoginQ = async ({ email, password }) => {
     console.log(error.message);
   }
 };
-
-// SELECT FROM skaters WHERE email='admin@admin' AND password= '111'
